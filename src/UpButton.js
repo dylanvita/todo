@@ -3,7 +3,7 @@ import './App.css';
 
 class UpButton extends React.Component {
     render() {
-        return (this.props.index == 0) ?
+        return (this.props.index === 0) ?
             (null)
             :
             (<button onClick={this.props.onClick}>

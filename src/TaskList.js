@@ -80,7 +80,6 @@ class TaskList extends React.Component {
                 collapseList={this.collapseList}
                 isCollapsed={this.props.isCollapsed}
                 listInfo={this.props.listInfo}
-                index={this.props.index}
                 totalLists={this.props.totalLists}
                 handleUpClick={this.handleUpClick}
                 handleDownClick={this.handleDownClick}
@@ -99,8 +98,6 @@ class TaskList extends React.Component {
                 moveItemUp={this.moveItemUp}
                 moveItemDown={this.moveItemDown}
                 addToList={this.addToList}
-                deleteList={this.deleteList}
-                index={this.props.index}
                 totalLists={this.props.totalLists}
                 handleUpClick={this.handleUpClick}
                 handleDownClick={this.handleDownClick}
@@ -112,7 +109,7 @@ class TaskList extends React.Component {
 function DisplayItems(props) {
     return (
         <div>
-            <a>{props.listInfo.listName}</a>
+            <a href>{props.listInfo.listName}</a>
             <input className="input3" type="text" id={props.index} />
             <AddButton name="Add Item" onClick={() => { props.addToList(document.getElementById(props.index).value) }} />
             <DeleteButton onClick={props.deleteList} />
@@ -150,7 +147,7 @@ function DisplayItems(props) {
 function DontDisplayItems(props) {
     return (
         <div>
-            <a>{props.listInfo.listName}</a>
+            <a href>{props.listInfo.listName}</a>
             <input className="input3" type="text" id={props.index} />
             <AddButton name="Add Item" onClick={() => { props.addToList(document.getElementById(props.index).value) }} />
             <DeleteButton onClick={props.deleteList} />
