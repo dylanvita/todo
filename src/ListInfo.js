@@ -1,13 +1,15 @@
 class ListInfo {
 
-    constructor(name) {
+    constructor(name, listItems = [], isCollapsed = false) {
         this.listName = name;
-        this.listItems = [];
-        this.isCollapsed = false;
+        this.listItems = listItems;
+        this.isCollapsed = isCollapsed;
+        this.totalItems = this.listItems.length;
     }
 
     addItem(itemName) {
         this.listItems.push([itemName, false]);
+        this.totalItems++;
     }
 
     completeItemButtonClick(index, name) {
@@ -15,7 +17,8 @@ class ListInfo {
     }
 
     deleteItem(index) {
-        this.listItems.splice(index,1);
+        this.listItems.splice(index, 1);
+        this.totalItems--;
     }
 
     itemChange(index, newName) {
@@ -24,16 +27,16 @@ class ListInfo {
 
     moveItemUp(index) {
         let temp = this.listItems[index - 1];
-        this.listItems.splice(index-1,1,this.listItems[index]);
-        this.listItems.splice(index,1,temp);
+        this.listItems.splice(index - 1, 1, this.listItems[index]);
+        this.listItems.splice(index, 1, temp);
     }
 
     moveItemDown(index) {
         let temp = this.listItems[index + 1];
-        this.listItems.splice(index+1,1,this.listItems[index]);
-        this.listItems.splice(index,1,temp);
+        this.listItems.splice(index + 1, 1, this.listItems[index]);
+        this.listItems.splice(index, 1, temp);
     }
-    
+
     changeCollapse() {
         this.isCollapsed = !this.isCollapsed;
     }

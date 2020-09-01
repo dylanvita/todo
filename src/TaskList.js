@@ -21,7 +21,6 @@ class TaskList extends React.Component {
         this.handleUpClick = this.handleUpClick.bind(this);
         this.handleDownClick= this.handleDownClick.bind(this);
         this.state = {
-            items: 0,
             collapsedArray: [this.props.isCollapsed],
         }
     }
@@ -29,7 +28,6 @@ class TaskList extends React.Component {
     addToList(name) {
         this.props.addToList(this.props.index, name);
         document.getElementById(this.props.index).value = "";
-        this.setState({ items: this.state.items + 1 });
     }
 
     deleteList() {
@@ -38,9 +36,6 @@ class TaskList extends React.Component {
 
     deleteFromList(itemIndex) {
         this.props.deleteFromList(this.props.index, itemIndex);
-        if (this.state.items > 0) {
-            this.setState({ items: this.state.items - 1 });
-        }
     }
 
     completeItemButtonClick(itemIndex, itemName) {
@@ -91,7 +86,7 @@ class TaskList extends React.Component {
                 collapseList={this.collapseList}
                 isCollapsed={this.props.isCollapsed}
                 listInfo={this.props.listInfo}
-                items={this.state.items}
+                items={this.props.totalItems}
                 listItemChange={this.listItemChange}
                 completeItemButtonClick={this.completeItemButtonClick}
                 deleteFromList={this.deleteFromList}
@@ -109,7 +104,7 @@ class TaskList extends React.Component {
 function DisplayItems(props) {
     return (
         <div>
-            <a href>{props.listInfo.listName}</a>
+            <span>{props.listInfo.listName}</span>
             <input className="input3" type="text" id={props.index} />
             <AddButton name="Add Item" onClick={() => { props.addToList(document.getElementById(props.index).value) }} />
             <DeleteButton onClick={props.deleteList} />
