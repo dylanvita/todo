@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/tasklists",
+            "lambdaFunction": "tasklists1lambda",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "apitasklists1",
+    "apiName": "apitasklists1",
+    "functionArns": [
+        {
+            "lambdaFunction": "tasklists1lambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-todo-dev-211414-authRole",
+        "unAuthRoleName": "amplify-todo-dev-211414-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "tasklists1lambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
